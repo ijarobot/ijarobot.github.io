@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: other | 哼哼哈哈’s Blog]]></title>
+  <link href="http://ijarobot.github.io/blog/categories/other/atom.xml" rel="self"/>
+  <link href="http://ijarobot.github.io/"/>
+  <updated>2014-11-22T22:55:26+08:00</updated>
+  <id>http://ijarobot.github.io/</id>
+  <author>
+    <name><![CDATA[仇加林]]></name>
+    <email><![CDATA[java2eer@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Hello World]]></title>
+    <link href="http://ijarobot.github.io/blog/2013/06/20/hello-world/"/>
+    <updated>2013-06-20T22:53:00+08:00</updated>
+    <id>http://ijarobot.github.io/blog/2013/06/20/hello-world</id>
+    <content type="html"><![CDATA[<p>Hello World!!!</p>
+
+<p>Hello code !!!</p>
+
+<p>Hello pople!!!</p>
+
+<p>Hello Java !!!</p>
+
+<p>Hello iOS  !!!</p>
+
+<p>Hello Android !!!</p>
+
+<p>Hello Robot   !!!</p>
+]]></content>
+  </entry>
+  
+</feed>

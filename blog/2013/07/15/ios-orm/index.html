@@ -1,0 +1,160 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>iOS-ORM,iOS上的对象关系映射 - 哼哼哈哈’s Blog</title>
+	<meta name="author" content="仇加林">
+
+	
+	<meta name="description" content="iOS-ORM,iOS上的对象关系映射 iOS-ORM 写sql你很烦？
+但缓存、本地收藏、本地数据…这些功能都需要使用sqlite需要建库、建表、写sql. iOS-ORM,iOS上的对象关系映射。让你不需要关心创建db、创建table、sql，你只需要关心model即可 iOS-ORM, &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="哼哼哈哈’s Blog" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://ijarobot.github.io/blog/2013/07/15/ios-orm/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("java2eer@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+</div>
+<hgroup>
+  <h1><a href="/">哼哼哈哈’s Blog</a></h1>
+  
+    <h2>二流程序猿类.</h2>
+  
+</hgroup>
+
+<p class="subtitle">二流程序猿类.</p>
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+<section class="aboutme">
+  <p>
+    一个会点j2ee,会点iOS,会着android...崇拜神一样的产品经理...的二流程序猿类.以上语句是不是很不通畅...
+  </p>
+</section>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		
+		<a class="github" href="https://github.com/ijarobot" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">iOS-ORM,iOS上的对象关系映射</h1>
+	<div class="entry-content" itemprop="articleBody"><h1>iOS-ORM</h1>
+
+<p>写sql你很烦？
+但缓存、本地收藏、本地数据…这些功能都需要使用sqlite需要建库、建表、写sql.</p>
+
+<p>iOS-ORM,iOS上的对象关系映射。让你不需要关心创建db、创建table、sql，你只需要关心model即可</p>
+
+<p>iOS-ORM,封装了普通的增、删、改、查功能。</p>
+
+<p>你只需要这样，不需要写一行sql：</p>
+
+<blockquote><pre><code>UserDao *userDao = [[[UserDao alloc] init] autorelease];
+for (int x = 0; x &lt; 20; x++) {
+    User * user = [[[User alloc] init] autorelease];
+    user.userID     = [NSString stringWithFormat:@"3243343%d",x];
+    user.userName   = [NSString stringWithFormat:@"ijarobot-%d",x];
+    user.signature  = @"二流程序猿";
+    user.userDesc   = @"还是一个坏程序猿";    
+    [userDao insert:user];
+}
+</code></pre></blockquote>
+
+<p>就能完成…如下图</p>
+
+<p><img src="https://github.com/ijarobot/iOS-ORM/blob/master/iOS-ORM/Screenshot/67599EFE-DDBC-448D-8715-3A0BAE857031.png?raw=true" alt="dbresult icon" /></p>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - 仇加林 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>
