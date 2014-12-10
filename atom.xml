@@ -4,7 +4,7 @@
   <title><![CDATA[Jialin’s Blog]]></title>
   <link href="http://ijarobot.github.io/atom.xml" rel="self"/>
   <link href="http://ijarobot.github.io/"/>
-  <updated>2014-12-10T18:38:08+08:00</updated>
+  <updated>2014-12-10T18:43:49+08:00</updated>
   <id>http://ijarobot.github.io/</id>
   <author>
     <name><![CDATA[仇加林]]></name>
@@ -25,10 +25,12 @@
   
   <entry>
     <title type="html"><![CDATA[Linux 命令个人收集(慢慢更新)]]></title>
-    <link href="http://ijarobot.github.io/blog/2014/02/25/linuxcha-kan-duan-kou-bei-na-ge-jin-cheng-zhan-yong/"/>
-    <updated>2014-02-25T11:18:00+08:00</updated>
-    <id>http://ijarobot.github.io/blog/2014/02/25/linuxcha-kan-duan-kou-bei-na-ge-jin-cheng-zhan-yong</id>
-    <content type="html"><![CDATA[<h2>-进程相关</h2>
+    <link href="http://ijarobot.github.io/blog/2013/12/25/linuxcha-kan-duan-kou-bei-na-ge-jin-cheng-zhan-yong/"/>
+    <updated>2013-12-25T11:18:00+08:00</updated>
+    <id>http://ijarobot.github.io/blog/2013/12/25/linuxcha-kan-duan-kou-bei-na-ge-jin-cheng-zhan-yong</id>
+    <content type="html"><![CDATA[<p>[摘要 记录在使用AWS　EC2 使用ubuntu.记录自己平时使用，而不熟悉的命令]</p>
+
+<h2>-进程相关</h2>
 
 <h2>查看详细系统进程信息</h2>
 
