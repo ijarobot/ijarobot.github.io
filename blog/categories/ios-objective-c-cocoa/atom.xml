@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ios,objective-c,cocoa | Jialin’s Blog]]></title>
   <link href="http://ijarobot.github.io/blog/categories/ios-objective-c-cocoa/atom.xml" rel="self"/>
   <link href="http://ijarobot.github.io/"/>
-  <updated>2014-12-11T00:09:52+08:00</updated>
+  <updated>2014-12-11T02:38:05+08:00</updated>
   <id>http://ijarobot.github.io/</id>
   <author>
     <name><![CDATA[仇加林]]></name>
@@ -25,6 +25,8 @@
 <p>如果userList中没有这个email则将当前email添加userList，然后保存userList到UserDefaults
 代码如下：</p>
 
+<p>```objc</p>
+
 <pre><code>NSMutableArray *userList = [userDefaults objectForKey:@"userList"];
 if(userList){
     if(![userList containsObject:self.email]){
@@ -37,6 +39,8 @@ if(userList){
 [userDefaults setObject:userList forKey:@"userList"];
 [userDefaults synchronize];
 </code></pre>
+
+<p>```</p>
 
 <p>以上的问题其实与NSUserDefaults是没有太大的关系。与O-c的id类型有关，因为[userDefaults objectForKey:@&ldquo;xxx&rdquo;]返回的是id类型。</p>
 

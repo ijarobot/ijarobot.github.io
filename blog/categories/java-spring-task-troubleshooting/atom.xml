@@ -4,7 +4,7 @@
   <title><![CDATA[Category: java,spring,task,troubleshooting | Jialin’s Blog]]></title>
   <link href="http://ijarobot.github.io/blog/categories/java-spring-task-troubleshooting/atom.xml" rel="self"/>
   <link href="http://ijarobot.github.io/"/>
-  <updated>2014-12-11T00:09:52+08:00</updated>
+  <updated>2014-12-11T02:38:05+08:00</updated>
   <id>http://ijarobot.github.io/</id>
   <author>
     <name><![CDATA[仇加林]]></name>
@@ -22,8 +22,9 @@
 
 <p>say-event-provider.xml</p>
 
-<pre><code>&lt;!-- lang: xml --&gt;
-&lt;beans xmlns="http://www.springframework.org/schema/beans"
+<p>```xml</p>
+
+<pre><code>&lt;beans xmlns="http://www.springframework.org/schema/beans"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xmlns:context="http://www.springframework.org/schema/context"
 xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
@@ -53,12 +54,12 @@ http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubb
 &lt;task:annotation-driven/&gt;.....
 </code></pre>
 
-<p>xxx.java</p>
+<p>```
+xxx.java</p>
 
 <p>```java</p>
 
-<pre><code>&lt;!-- lang: java --&gt;
-@Component
+<pre><code>@Component
 @Transactional
 public class EventServiceImpl implements EventService {
 final static Logger logger = Logger.getLogger(EventServiceImpl.class);
@@ -88,11 +89,13 @@ public void test(){
 
 <p>原因就出在<strong>say-event-provider.xml</strong>的</p>
 
-<pre><code>&lt;!-- lang: xml --&gt;
-&lt;bean id="eventService" class="com.say.event.provider.EventServiceImpl" /&gt;
+<p>```xml</p>
+
+<pre><code>&lt;bean id="eventService" class="com.say.event.provider.EventServiceImpl" /&gt;
 </code></pre>
 
-<p>和 <strong>xxx.java</strong>的第一行代码 <strong>@Component</strong>注解。它们两个会使用Spring 在初始化的过程中分别产生一个EventServiceImpl的实例。所以导致以上的结果。</p>
+<p>```
+和 <strong>xxx.java</strong>的第一行代码 <strong>@Component</strong>注解。它们两个会使用Spring 在初始化的过程中分别产生一个EventServiceImpl的实例。所以导致以上的结果。</p>
 ]]></content>
   </entry>
   
