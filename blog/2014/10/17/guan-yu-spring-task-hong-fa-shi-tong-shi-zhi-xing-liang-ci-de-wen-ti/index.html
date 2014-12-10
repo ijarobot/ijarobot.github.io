@@ -130,17 +130,28 @@ http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubb
 
 <p>xxx.java</p>
 
-<pre><code>&lt;!-- lang: java --&gt;
-@Component
-@Transactional
-public class EventServiceImpl implements EventService {
-final static Logger logger = Logger.getLogger(EventServiceImpl.class);
-    ....
-@Scheduled(cron="0 0/1 * * * ?")   //每分钟触发一次 
-public void test(){
-    System.err.println(this +" === "+ new Date() +" === "+ Thread.currentThread().getId() +" === "+ Thread.currentThread().getName() );
-}   
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">&lt;!--</span> <span class="nl">lang:</span> <span class="n">java</span> <span class="o">--&gt;</span>
+</span><span class='line'><span class="nd">@Component</span>
+</span><span class='line'><span class="nd">@Transactional</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EventServiceImpl</span> <span class="kd">implements</span> <span class="n">EventService</span> <span class="o">{</span>
+</span><span class='line'><span class="kd">final</span> <span class="kd">static</span> <span class="n">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">EventServiceImpl</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">....</span>
+</span><span class='line'><span class="nd">@Scheduled</span><span class="o">(</span><span class="n">cron</span><span class="o">=</span><span class="s">&quot;0 0/1 * * * ?&quot;</span><span class="o">)</span>   <span class="c1">//每分钟触发一次 </span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(){</span>
+</span><span class='line'>  <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span> <span class="o">+</span><span class="s">&quot; === &quot;</span><span class="o">+</span> <span class="k">new</span> <span class="n">Date</span><span class="o">()</span> <span class="o">+</span><span class="s">&quot; === &quot;</span><span class="o">+</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getId</span><span class="o">()</span> <span class="o">+</span><span class="s">&quot; === &quot;</span><span class="o">+</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">()</span> <span class="o">);</span>
+</span><span class='line'><span class="o">}</span>  
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>执行结果:</p>
 
