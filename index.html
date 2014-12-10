@@ -7,7 +7,7 @@
 	<meta name="author" content="仇加林">
 
 	
-	<meta name="description" content="Oct 13th, 2014 准备去火星 Dec 25th, 2013 Linux Linux 命令个人收集(慢慢更新) [摘要 记录在使用AWS　EC2 使用ubuntu.记录自己平时使用，而不熟悉的命令] -进程相关 查看详细系统进程信息 ps -aux 查看端口被哪个进程占用 lsof - &hellip;">
+	<meta name="description" content="Oct 13th, 2014 准备去火星 Feb 25th, 2014 iOS使用NSUserDefaults的小细节问题 【摘要 以下的问题其实与NSUserDefaults是没有太大的关系。与O-c的id类型有关，因为[userDefaults objectForKey:@&ldquo; &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -119,6 +119,74 @@
 	<div class="entry-content" itemprop="articleBody">
 		<iframe src="http://mars.nasa.gov/participate/send-your-name/orion-first-flight/?action=getcert&e=1&cn=795458" width="750" height="307" scrolling="no" frameborder="0"></iframe>
 
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-25T13:45:00+08:00" data-updated="true" itemprop="datePublished">Feb 25<span>th</span>, 2014</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/02/25/iosshi-yong-nsuserdefaultsde-xiao-xi-jie-wen-ti/" itemprop="url">iOS使用NSUserDefaults的小细节问题</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>【摘要 以下的问题其实与NSUserDefaults是没有太大的关系。与O-c的id类型有关，因为[userDefaults objectForKey:@&ldquo;xxx&rdquo;]返回的是id类型。 以下的代码跑起来大多数情况是正常的，但有时候会崩溃】</p>
+
+<h6>#逻辑：从NSUserDefaults中读出userList</h6>
+
+<p>如果userList中没有这个email则将当前email添加userList，然后保存userList到UserDefaults
+代码如下：</p>
+
+<pre><code>NSMutableArray *userList = [userDefaults objectForKey:@"userList"];
+if(userList){
+    if(![userList containsObject:self.email]){
+        [userList addObject:self.email];
+    }
+}else{
+    userList = [NSMutableArray array];
+    [userList addObject:self.email];
+}
+[userDefaults setObject:userList forKey:@"userList"];
+[userDefaults synchronize];
+</code></pre>
+
+<p>以上的问题其实与NSUserDefaults是没有太大的关系。与O-c的id类型有关，因为[userDefaults objectForKey:@&ldquo;xxx&rdquo;]返回的是id类型。</p>
+
+<p>上面的代码跑起来大多数情况是正常的，出错的概率虽然比较小，但有时候会崩溃，错误信息如下</p>
+
+<pre><code>2014-02-25 13:14:15.503 SAY[3725:70b] *** Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: '-[__NSCFArray insertObject:atIndex:]: mutating method sent to immutable object'
+</code></pre>
+
+<p>错误出在这一行代码</p>
+
+<pre><code>[userList addObject:self.email];
+</code></pre>
+
+<p>此时userList实际上是NSArray的实例，虽然它被显示的声明为NSMutableArray*.</p>
+
+<p>安全的写法为</p>
+
+<pre><code>NSMutableArray *userList = [NSMutableArray arrayWithArray:[userDefaults objectForKey:@"userList"]];
+</code></pre>
 
 		
 		
