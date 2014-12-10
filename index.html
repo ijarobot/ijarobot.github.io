@@ -167,18 +167,22 @@ final static Logger logger = Logger.getLogger(EventServiceImpl.class);
 @Scheduled(cron="0 0/1 * * * ?")   //每分钟触发一次 
 public void test(){
     System.err.println(this +" === "+ new Date() +" === "+ Thread.currentThread().getId() +" === "+ Thread.currentThread().getName() );
-}
+}   
 </code></pre>
 
 <p>执行结果:</p>
 
 <p><img src="http://static.oschina.net/uploads/space/2014/1017/151310_gmCu_556928.jpg" alt="在此输入图片描述" /></p>
 
-<p>上图中看到在同一时间点执行了两次。
-同时，查以通过划红色下划红的结果：
-com.say.event.provider.EventServiceImpl<strong>@20fc40ae</strong>
-com.say.event.provider.EventServiceImpl<strong>@19aa5882</strong>
-可以看出他们不是同一个实例，由于可以看出是<em>EventServiceImpl</em> 的两个不同实例的<em>test()</em>方法分别被执行了一次，加来共为两次。</p>
+<p>上图中看到在同一时间点执行了两次。</p>
+
+<p>同时，查以通过划红色下划红的结果：</p>
+
+<p>com.say.event.provider.EventServiceImpl<strong>@20fc40ae</strong></p>
+
+<p>com.say.event.provider.EventServiceImpl<strong>@19aa5882</strong></p>
+
+<p>可以看出他们不是同一个实例，由于可以看出是<em>EventServiceImpl</em> 的两个不同实例的<em>test()</em>方法分别被执行了一次，加来共为两次。</p>
 
 <p>为什么执行了两次, 或者说什么会产两个实例？，Spring Bean的scope 默认可是singleton的哦&hellip;</p>
 
