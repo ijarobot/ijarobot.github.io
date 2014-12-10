@@ -1,0 +1,248 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>关于Spring Task 触发时同时执行两次的问题 - Jialin’s Blog</title>
+	<meta name="author" content="仇加林">
+
+	
+	<meta name="description" content="关于Spring Task 触发时同时执行两次的问题 【摘要 软件环境dubbo+mybatis+spring, 在使用Spring task 每1分钟执行do something时，却发现do something执行了两次】 say-event-provider.xml &lt;!-- &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Jialin’s Blog" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://ijarobot.github.io/blog/2014/10/17/guan-yu-spring-task-hong-fa-shi-tong-shi-zhi-xing-liang-ci-de-wen-ti/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("java2eer@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+</div>
+<hgroup>
+  <h1><a href="/">Jialin’s Blog</a></h1>
+  
+    <h2>猿类</h2>
+  
+</hgroup>
+
+<p class="subtitle">猿类</p>
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/blog/archives">SAY Project</a></li>
+  <li><a href="/blog/archives">About</a></li>
+</ul>
+
+
+<section class="aboutme">
+  <p>
+    java,ios,android开发者
+  </p>
+</section>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		
+		<a class="github" href="https://github.com/ijarobot" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">关于Spring Task 触发时同时执行两次的问题</h1>
+	<div class="entry-content" itemprop="articleBody"><p>【摘要 软件环境dubbo+mybatis+spring, 在使用Spring task 每1分钟执行do something时，却发现do something执行了两次】</p>
+
+<p>say-event-provider.xml</p>
+
+<pre><code>&lt;!-- lang: xml --&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+xmlns:jdbc="http://www.springframework.org/schema/jdbc" 
+xmlns:tx="http://www.springframework.org/schema/tx"
+xmlns:aop="http://www.springframework.org/schema/aop"
+xmlns:task="http://www.springframework.org/schema/task" 
+xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd
+http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"&gt;
+
+&lt;dubbo:registry address="zookeeper://127.0.0.1:2181" /&gt;
+
+&lt;bean id="eventService" class="com.say.event.provider.EventServiceImpl" /&gt;
+&lt;dubbo:service interface="com.say.event.EventService" ref="eventService" /&gt;
+&lt;bean id="eventMomentService" class="com.say.event.provider.EventMomentServiceImpl" /&gt;
+&lt;dubbo:service interface="com.say.event.EventMomentService" ref="eventMomentService" /&gt;
+
+&lt;dubbo:reference id="pushService" interface="com.say.user.PushService" /&gt;
+
+&lt;context:component-scan base-package="com.say.event"/&gt;
+&lt;task:annotation-driven/&gt;.....
+</code></pre>
+
+<p>xxx.java</p>
+
+<pre><code>&lt;!-- lang: java --&gt;
+@Component
+@Transactional
+public class EventServiceImpl implements EventService {
+final static Logger logger = Logger.getLogger(EventServiceImpl.class);
+    ....
+@Scheduled(cron="0 0/1 * * * ?")   //每分钟触发一次 
+public void test(){
+    System.err.println(this +" === "+ new Date() +" === "+ Thread.currentThread().getId() +" === "+ Thread.currentThread().getName() );
+}
+</code></pre>
+
+<p>执行结果:</p>
+
+<p><img src="http://static.oschina.net/uploads/space/2014/1017/151310_gmCu_556928.jpg" alt="在此输入图片描述" /></p>
+
+<p>上图中看到在同一时间点执行了两次。
+同时，查以通过划红色下划红的结果：
+com.say.event.provider.EventServiceImpl<strong>@20fc40ae</strong>
+com.say.event.provider.EventServiceImpl<strong>@19aa5882</strong>
+可以看出他们不是同一个实例，由于可以看出是<em>EventServiceImpl</em> 的两个不同实例的<em>test()</em>方法分别被执行了一次，加来共为两次。</p>
+
+<p>为什么执行了两次, 或者说什么会产两个实例？，Spring Bean的scope 默认可是singleton的哦&hellip;</p>
+
+<p>原因就出在<strong>say-event-provider.xml</strong>的</p>
+
+<pre><code>&lt;!-- lang: xml --&gt;
+&lt;bean id="eventService" class="com.say.event.provider.EventServiceImpl" /&gt;
+</code></pre>
+
+<p>和 <strong>xxx.java</strong>的第一行代码 <strong>@Component</strong>注解。它们两个会使用Spring 在初始化的过程中分别产生一个EventServiceImpl的实例。所以导致以上的结果。</p>
+</div>
+
+</article>
+
+	<!--
+<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+-->
+
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+
+
+
+
+  <section>
+   <!-- start -->
+<div class="ds-thread" data-thread-key="/blog/2014/10/17/guan-yu-spring-task-hong-fa-shi-tong-shi-zhi-xing-liang-ci-de-wen-ti" data-title="关于Spring Task 触发时同时执行两次的问题" data-url="http://ijarobot.github.io/blog/2014/10/17/guan-yu-spring-task-hong-fa-shi-tong-shi-zhi-xing-liang-ci-de-wen-ti/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"qiujialin"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+  </section>
+ 
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Hosting on GitHub & GitCafe,Copyright &copy; 2014 - 仇加林 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F55755a49bdeef39656108161f1940eda' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ios,objective-c,cocoa | Jialin’s Blog]]></title>
+  <link href="http://ijarobot.github.io/blog/categories/ios-objective-c-cocoa/atom.xml" rel="self"/>
+  <link href="http://ijarobot.github.io/"/>
+  <updated>2014-12-10T21:49:34+08:00</updated>
+  <id>http://ijarobot.github.io/</id>
+  <author>
+    <name><![CDATA[仇加林]]></name>
+    <email><![CDATA[java2eer@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[iOS使用NSUserDefaults的小细节问题]]></title>
+    <link href="http://ijarobot.github.io/blog/2014/02/25/iosshi-yong-nsuserdefaultsde-xiao-xi-jie-wen-ti/"/>
+    <updated>2014-02-25T13:45:00+08:00</updated>
+    <id>http://ijarobot.github.io/blog/2014/02/25/iosshi-yong-nsuserdefaultsde-xiao-xi-jie-wen-ti</id>
+    <content type="html"><![CDATA[<p>【摘要 以下的问题其实与NSUserDefaults是没有太大的关系。与O-c的id类型有关，因为[userDefaults objectForKey:@&ldquo;xxx&rdquo;]返回的是id类型。 以下的代码跑起来大多数情况是正常的，但有时候会崩溃】</p>
+
+<h6>#逻辑：从NSUserDefaults中读出userList</h6>
+
+<p>如果userList中没有这个email则将当前email添加userList，然后保存userList到UserDefaults
+代码如下：</p>
+
+<pre><code>NSMutableArray *userList = [userDefaults objectForKey:@"userList"];
+if(userList){
+    if(![userList containsObject:self.email]){
+        [userList addObject:self.email];
+    }
+}else{
+    userList = [NSMutableArray array];
+    [userList addObject:self.email];
+}
+[userDefaults setObject:userList forKey:@"userList"];
+[userDefaults synchronize];
+</code></pre>
+
+<p>以上的问题其实与NSUserDefaults是没有太大的关系。与O-c的id类型有关，因为[userDefaults objectForKey:@&ldquo;xxx&rdquo;]返回的是id类型。</p>
+
+<p>上面的代码跑起来大多数情况是正常的，出错的概率虽然比较小，但有时候会崩溃，错误信息如下</p>
+
+<pre><code>2014-02-25 13:14:15.503 SAY[3725:70b] *** Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: '-[__NSCFArray insertObject:atIndex:]: mutating method sent to immutable object'
+</code></pre>
+
+<p>错误出在这一行代码</p>
+
+<pre><code>[userList addObject:self.email];
+</code></pre>
+
+<p>此时userList实际上是NSArray的实例，虽然它被显示的声明为NSMutableArray*.</p>
+
+<p>安全的写法为</p>
+
+<pre><code>NSMutableArray *userList = [NSMutableArray arrayWithArray:[userDefaults objectForKey:@"userList"]];
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

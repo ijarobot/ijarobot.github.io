@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: java,spring,task,troubleshooting | Jialin’s Blog]]></title>
+  <link href="http://ijarobot.github.io/blog/categories/java-spring-task-troubleshooting/atom.xml" rel="self"/>
+  <link href="http://ijarobot.github.io/"/>
+  <updated>2014-12-10T21:49:34+08:00</updated>
+  <id>http://ijarobot.github.io/</id>
+  <author>
+    <name><![CDATA[仇加林]]></name>
+    <email><![CDATA[java2eer@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[关于Spring Task 触发时同时执行两次的问题]]></title>
+    <link href="http://ijarobot.github.io/blog/2014/10/17/guan-yu-spring-task-hong-fa-shi-tong-shi-zhi-xing-liang-ci-de-wen-ti/"/>
+    <updated>2014-10-17T15:29:00+08:00</updated>
+    <id>http://ijarobot.github.io/blog/2014/10/17/guan-yu-spring-task-hong-fa-shi-tong-shi-zhi-xing-liang-ci-de-wen-ti</id>
+    <content type="html"><![CDATA[<p>【摘要 软件环境dubbo+mybatis+spring, 在使用Spring task 每1分钟执行do something时，却发现do something执行了两次】</p>
+
+<p>say-event-provider.xml</p>
+
+<pre><code>&lt;!-- lang: xml --&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+xmlns:jdbc="http://www.springframework.org/schema/jdbc" 
+xmlns:tx="http://www.springframework.org/schema/tx"
+xmlns:aop="http://www.springframework.org/schema/aop"
+xmlns:task="http://www.springframework.org/schema/task" 
+xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd
+http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"&gt;
+
+&lt;dubbo:registry address="zookeeper://127.0.0.1:2181" /&gt;
+
+&lt;bean id="eventService" class="com.say.event.provider.EventServiceImpl" /&gt;
+&lt;dubbo:service interface="com.say.event.EventService" ref="eventService" /&gt;
+&lt;bean id="eventMomentService" class="com.say.event.provider.EventMomentServiceImpl" /&gt;
+&lt;dubbo:service interface="com.say.event.EventMomentService" ref="eventMomentService" /&gt;
+
+&lt;dubbo:reference id="pushService" interface="com.say.user.PushService" /&gt;
+
+&lt;context:component-scan base-package="com.say.event"/&gt;
+&lt;task:annotation-driven/&gt;.....
+</code></pre>
+
+<p>xxx.java</p>
+
+<pre><code>&lt;!-- lang: java --&gt;
+@Component
+@Transactional
+public class EventServiceImpl implements EventService {
+final static Logger logger = Logger.getLogger(EventServiceImpl.class);
+    ....
+@Scheduled(cron="0 0/1 * * * ?")   //每分钟触发一次 
+public void test(){
+    System.err.println(this +" === "+ new Date() +" === "+ Thread.currentThread().getId() +" === "+ Thread.currentThread().getName() );
+}
+</code></pre>
+
+<p>执行结果:</p>
+
+<p><img src="http://static.oschina.net/uploads/space/2014/1017/151310_gmCu_556928.jpg" alt="在此输入图片描述" /></p>
+
+<p>上图中看到在同一时间点执行了两次。
+同时，查以通过划红色下划红的结果：
+com.say.event.provider.EventServiceImpl<strong>@20fc40ae</strong>
+com.say.event.provider.EventServiceImpl<strong>@19aa5882</strong>
+可以看出他们不是同一个实例，由于可以看出是<em>EventServiceImpl</em> 的两个不同实例的<em>test()</em>方法分别被执行了一次，加来共为两次。</p>
+
+<p>为什么执行了两次, 或者说什么会产两个实例？，Spring Bean的scope 默认可是singleton的哦&hellip;</p>
+
+<p>原因就出在<strong>say-event-provider.xml</strong>的</p>
+
+<pre><code>&lt;!-- lang: xml --&gt;
+&lt;bean id="eventService" class="com.say.event.provider.EventServiceImpl" /&gt;
+</code></pre>
+
+<p>和 <strong>xxx.java</strong>的第一行代码 <strong>@Component</strong>注解。它们两个会使用Spring 在初始化的过程中分别产生一个EventServiceImpl的实例。所以导致以上的结果。</p>
+]]></content>
+  </entry>
+  
+</feed>
