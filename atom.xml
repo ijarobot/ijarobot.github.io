@@ -4,7 +4,7 @@
   <title><![CDATA[Jialin’s Blog]]></title>
   <link href="http://ijarobot.github.io/atom.xml" rel="self"/>
   <link href="http://ijarobot.github.io/"/>
-  <updated>2014-12-11T21:35:40+08:00</updated>
+  <updated>2014-12-11T23:23:29+08:00</updated>
   <id>http://ijarobot.github.io/</id>
   <author>
     <name><![CDATA[仇加林]]></name>
@@ -18,7 +18,7 @@
     <link href="http://ijarobot.github.io/blog/2014/12/06/android-liao-tian-kong-jian-android-chat-widget/"/>
     <updated>2014-12-06T12:14:00+08:00</updated>
     <id>http://ijarobot.github.io/blog/2014/12/06/android-liao-tian-kong-jian-android-chat-widget</id>
-    <content type="html"><![CDATA[<p>【摘要 我在开发SAY这个项目时，基于Xmpp做了IM模块。前几天整理SAY项目的代码封装了这样一个聊天的控件】</p>
+    <content type="html"><![CDATA[<p>【摘要 我在开发<a href="http://ijarobot.github.io/blog/2014/11/07/say-project/"><code>SAY</code></a>这个项目时，基于Xmpp做了IM模块。前几天整理<a href="http://ijarobot.github.io/blog/2014/11/07/say-project/"><code>SAY</code></a>项目的代码封装了这样一个聊天的控件】</p>
 
 <h1>Android-Chat-Widget</h1>
 
