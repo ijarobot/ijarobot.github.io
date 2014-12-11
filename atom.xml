@@ -4,7 +4,7 @@
   <title><![CDATA[Jialin’s Blog]]></title>
   <link href="http://ijarobot.github.io/atom.xml" rel="self"/>
   <link href="http://ijarobot.github.io/"/>
-  <updated>2014-12-11T03:31:56+08:00</updated>
+  <updated>2014-12-11T21:22:20+08:00</updated>
   <id>http://ijarobot.github.io/</id>
   <author>
     <name><![CDATA[仇加林]]></name>
@@ -120,6 +120,106 @@
 <p>Github:<a href="https://github.com/ijarobot/Android-Chat-Widget">https://github.com/ijarobot/Android-Chat-Widget</a></p>
 
 <p>Git@OSC:<a href="http://git.oschina.net/ijarobot/Android-Chat-Widget">http://git.oschina.net/ijarobot/Android-Chat-Widget</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SAY Project]]></title>
+    <link href="http://ijarobot.github.io/blog/2014/11/07/say-project/"/>
+    <updated>2014-11-07T12:20:00+08:00</updated>
+    <id>http://ijarobot.github.io/blog/2014/11/07/say-project</id>
+    <content type="html"><![CDATA[<h2>Introduce</h2>
+
+<p>于13年年末离开磨房网，至今差不多一年左右的时间。与香港的4位朋友在做<code>SAY</code>这个APP，香港负责需求、任务安排、测试以及后期的运营推广，我在深圳负责开发所有的功能、发布上线。</p>
+
+<p>经过我们5人共同的努力，现在Android已经发布2.1版，iOS已经发布2.0版。目前还没有多少真正的用户，都是认识的朋友在帮忙试用。计划再迭代几个版本后，再由香港团队负责推广。</p>
+
+<p><code>SAY</code>&mdash; Something Around You的首写字母的缩写，主要的功能是找共同兴趣爱好的人发起活动、参加活动、记录活动过程中美好的时刻，以及活动开始前后的沟通与交流。另外，商家用户也可以发布收费的商业活动。</p>
+
+<h2>Architecture</h2>
+
+<p><img src='http://ijarobot.github.io/images/say/screenshoot/say-architecture.jpg' style="max-height: 800px; max-width: 800px;"></p>
+
+<h2>Technology</h2>
+
+<p><strong>Server:</strong><code>Java</code> <code>Xmpp</code> <code>Spring</code> <code>Mybatis</code> <code>Duboo</code> <code>Rop</code> <code>Maven</code> <code>Tigase</code></p>
+
+<p><strong>DB:</strong><code>MySQL</code></p>
+
+<p><strong>云平台:</strong><code>AWS新加坡节点</code>  <code>EC2(两个实例)</code>  <code>RDS(两个mysql实例)</code>  <code>S3(文件存储主要是保存图片)</code>  <code>SES(用来发送邮件)</code>  <code>SNS(Android、iOS远程消息推送)</code></p>
+
+<p><strong>iOS:</strong><code>XMPPFramework</code> <code>ViewDeck</code> <code>SDWebImage</code> <code>Facebook-SDK</code> <code>AWS-SDK</code></p>
+
+<p><strong>Android:</strong><code>ASmack</code>  <code>Android-PullToRefresh</code>  <code>Universal-Image-Loader</code> <code>Facebook-SDK</code> <code>AWS-SDK</code> <a href="https://github.com/ijarobot/Android-Chat-Widget"><code>Android-Chat-Widget</code></a></p>
+
+<h2>Screenshot</h2>
+
+<table border="0" >
+    <tr>
+        <td><img src='http://ijarobot.github.io/images/say/screenshoot/device-2014-12-11-120541.png' style="max-height: 565px; max-width: 1043px;"></td>
+        <td width="50">  </td>
+        <td><img src='http://ijarobot.github.io/images/say/screenshoot/device-2014-11-19-153500.png' style="max-height: 565px; max-width: 1043px;"></td>
+    </tr>
+    <tr height="50"></tr>
+    <tr>
+        <td><img src='http://ijarobot.github.io/images/say/screenshoot/device-2014-11-19-153543.png' style="max-height: 565px; max-width: 1043px;"></td>
+        <td width="50">  </td>
+        <td><img src='http://ijarobot.github.io/images/say/screenshoot/device-2014-11-19-153655.png' style="max-height: 565px; max-width: 1043px;"></td>
+    </tr>
+    <tr height="50"></tr>
+    <tr>
+        <td><img src='http://ijarobot.github.io/images/say/screenshoot/device-2014-12-11-120807.jpg' style="max-height: 565px; max-width: 1043px;"></td>
+        <td width="50">  </td>
+        <td><img src='http://ijarobot.github.io/images/say/screenshoot/device-2014-11-19-152341.jpg' style="max-height: 565px; max-width: 1043px;"></td>
+    </tr>
+    <tr height="50"></tr>
+    <tr>
+        <td><img src='http://ijarobot.github.io/images/say/screenshoot/device-2014-11-19-153432.jpg' style="max-height: 565px; max-width: 1043px;"></td>
+        <td width="50">  </td>
+        <td><img src='http://ijarobot.github.io/images/say/screenshoot/device-2014-11-19-153445.png' style="max-height: 565px; max-width: 1043px;"></td>
+    </tr>
+    <tr height="50"></tr>       
+</table>
+
+
+<h2>Dowloads</h2>
+
+<table border="0" >
+    <tr>
+        <td style="text-align: center;"><b>Android</b></td>
+        <td width="85">  </td>
+        <td style="text-align: center;"><b>iOS</b></td>
+    </tr>
+    <tr height="10" ></tr>
+    
+    <tr>
+        <td><a href="http://54.169.13.221:8088/say/say/SAY-google-release.apk">
+                <img alt="Get it on AWS" src="http://ijarobot.github.io/images/say/screenshoot/say-android.png" />
+            </a>
+        </td>
+        <td width="85">  </td>
+        <td><a href="https://itunes.apple.com/us/app/say/id914290055?l=zh&ls=1&mt=8">
+                <img alt="Get it on App Store" src="http://ijarobot.github.io/images/say/screenshoot/say-ios.png" />
+            </a>
+        </td>
+    </tr>
+
+    
+    <tr>
+        <td style="text-align: center;"><a href="https://play.google.com/store/apps/details?id=com.say">
+                <img style="vertical-align:middle;" src="http://ijarobot.github.io/images/say/screenshoot/en_generic_rgb_wo_60.png" />
+            </a>
+        </td>
+        <td width="85">  </td>
+        <td style="text-align: center;"> <a href="https://itunes.apple.com/us/app/say/id914290055?l=zh&ls=1&mt=8">
+                <img style="vertical-align:middle;" src="http://ijarobot.github.io/images/say/screenshoot/badge_appstore-lrg_60.png" />
+            </a>
+        </td>
+    </tr>   
+</table>
+
+
+
 ]]></content>
   </entry>
   

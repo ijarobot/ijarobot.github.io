@@ -3,11 +3,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>iOS使用NSUserDefaults的小细节问题 - Jialin’s Blog</title>
+	<title>SAY Project - Jialin’s Blog</title>
 	<meta name="author" content="仇加林">
 
 	
-	<meta name="description" content="iOS使用NSUserDefaults的小细节问题 【摘要 以下的问题其实与NSUserDefaults是没有太大的关系。与O-c的id类型有关，因为[userDefaults objectForKey:@&ldquo;xxx&rdquo;]返回的是id类型。 以下的代码跑起来大多数情况是正常的 &hellip;">
+	<meta name="description" content="SAY Project Introduce 于13年年末离开磨房网，至今差不多一年左右的时间。与香港的4位朋友在做SAY这个APP，香港负责需求、任务安排、测试以及后期的运营推广，我在深圳负责开发所有的功能、发布上线。 经过我们5人共同的努力，现在Android已经发布2.1版，iOS已经发布2 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -17,7 +17,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Jialin’s Blog" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://ijarobot.github.io/blog/2014/02/25/iosshi-yong-nsuserdefaultsde-xiao-xi-jie-wen-ti/">
+	<link rel="canonical" href="http://ijarobot.github.io/blog/2014/11/07/say-project/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -97,57 +97,99 @@
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">iOS使用NSUserDefaults的小细节问题</h1>
-	<div class="entry-content" itemprop="articleBody"><p>【摘要 以下的问题其实与NSUserDefaults是没有太大的关系。与O-c的id类型有关，因为[userDefaults objectForKey:@&ldquo;xxx&rdquo;]返回的是id类型。 以下的代码跑起来大多数情况是正常的，但有时候会崩溃】</p>
+	<h1 class="title" itemprop="name">SAY Project</h1>
+	<div class="entry-content" itemprop="articleBody"><h2>Introduce</h2>
 
-<h6>#逻辑：从NSUserDefaults中读出userList</h6>
+<p>于13年年末离开磨房网，至今差不多一年左右的时间。与香港的4位朋友在做<code>SAY</code>这个APP，香港负责需求、任务安排、测试以及后期的运营推广，我在深圳负责开发所有的功能、发布上线。</p>
 
-<p>如果userList中没有这个email则将当前email添加userList，然后保存userList到UserDefaults
-代码如下：</p>
+<p>经过我们5人共同的努力，现在Android已经发布2.1版，iOS已经发布2.0版。目前还没有多少真正的用户，都是认识的朋友在帮忙试用。计划再迭代几个版本后，再由香港团队负责推广。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">NSMutableArray</span> <span class="o">*</span><span class="n">userList</span> <span class="o">=</span> <span class="p">[</span><span class="n">userDefaults</span> <span class="nl">objectForKey:</span><span class="s">@&quot;userList&quot;</span><span class="p">];</span>
-</span><span class='line'><span class="k">if</span><span class="p">(</span><span class="n">userList</span><span class="p">){</span>
-</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">[</span><span class="n">userList</span> <span class="nl">containsObject:</span><span class="n">self</span><span class="p">.</span><span class="n">email</span><span class="p">]){</span>
-</span><span class='line'>        <span class="p">[</span><span class="n">userList</span> <span class="nl">addObject:</span><span class="n">self</span><span class="p">.</span><span class="n">email</span><span class="p">];</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span><span class="k">else</span><span class="p">{</span>
-</span><span class='line'>    <span class="n">userList</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="n">array</span><span class="p">];</span>
-</span><span class='line'>    <span class="p">[</span><span class="n">userList</span> <span class="nl">addObject:</span><span class="n">self</span><span class="p">.</span><span class="n">email</span><span class="p">];</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="p">[</span><span class="n">userDefaults</span> <span class="nl">setObject:</span><span class="n">userList</span> <span class="nl">forKey:</span><span class="s">@&quot;userList&quot;</span><span class="p">];</span>
-</span><span class='line'><span class="p">[</span><span class="n">userDefaults</span> <span class="n">synchronize</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure>
+<p><code>SAY</code>&mdash; Something Around You的首写字母的缩写，主要的功能是找共同兴趣爱好的人发起活动、参加活动、记录活动过程中美好的时刻，以及活动开始前后的沟通与交流。另外，商家用户也可以发布收费的商业活动。</p>
+
+<h2>Architecture</h2>
+
+<p><img src='/images/say/screenshoot/say-architecture.jpg' style="max-height: 800px; max-width: 800px;"></p>
+
+<h2>Technology</h2>
+
+<p><strong>Server:</strong><code>Java</code> <code>Xmpp</code> <code>Spring</code> <code>Mybatis</code> <code>Duboo</code> <code>Rop</code> <code>Maven</code> <code>Tigase</code></p>
+
+<p><strong>DB:</strong><code>MySQL</code></p>
+
+<p><strong>云平台:</strong><code>AWS新加坡节点</code>  <code>EC2(两个实例)</code>  <code>RDS(两个mysql实例)</code>  <code>S3(文件存储主要是保存图片)</code>  <code>SES(用来发送邮件)</code>  <code>SNS(Android、iOS远程消息推送)</code></p>
+
+<p><strong>iOS:</strong><code>XMPPFramework</code> <code>ViewDeck</code> <code>SDWebImage</code> <code>Facebook-SDK</code> <code>AWS-SDK</code></p>
+
+<p><strong>Android:</strong><code>ASmack</code>  <code>Android-PullToRefresh</code>  <code>Universal-Image-Loader</code> <code>Facebook-SDK</code> <code>AWS-SDK</code> <a href="https://github.com/ijarobot/Android-Chat-Widget"><code>Android-Chat-Widget</code></a></p>
+
+<h2>Screenshot</h2>
+
+<table border="0" >
+    <tr>
+        <td><img src='/images/say/screenshoot/device-2014-12-11-120541.png' style="max-height: 565px; max-width: 1043px;"></td>
+        <td width="50">  </td>
+        <td><img src='/images/say/screenshoot/device-2014-11-19-153500.png' style="max-height: 565px; max-width: 1043px;"></td>
+    </tr>
+    <tr height="50"></tr>
+    <tr>
+        <td><img src='/images/say/screenshoot/device-2014-11-19-153543.png' style="max-height: 565px; max-width: 1043px;"></td>
+        <td width="50">  </td>
+        <td><img src='/images/say/screenshoot/device-2014-11-19-153655.png' style="max-height: 565px; max-width: 1043px;"></td>
+    </tr>
+    <tr height="50"></tr>
+    <tr>
+        <td><img src='/images/say/screenshoot/device-2014-12-11-120807.jpg' style="max-height: 565px; max-width: 1043px;"></td>
+        <td width="50">  </td>
+        <td><img src='/images/say/screenshoot/device-2014-11-19-152341.jpg' style="max-height: 565px; max-width: 1043px;"></td>
+    </tr>
+    <tr height="50"></tr>
+    <tr>
+        <td><img src='/images/say/screenshoot/device-2014-11-19-153432.jpg' style="max-height: 565px; max-width: 1043px;"></td>
+        <td width="50">  </td>
+        <td><img src='/images/say/screenshoot/device-2014-11-19-153445.png' style="max-height: 565px; max-width: 1043px;"></td>
+    </tr>
+    <tr height="50"></tr>       
+</table>
 
 
-<p>以上的问题其实与NSUserDefaults是没有太大的关系。与O-c的id类型有关，因为[userDefaults objectForKey:@&ldquo;xxx&rdquo;]返回的是id类型。</p>
+<h2>Dowloads</h2>
 
-<p>上面的代码跑起来大多数情况是正常的，出错的概率虽然比较小，但有时候会崩溃，错误信息如下</p>
+<table border="0" >
+    <tr>
+        <td style="text-align: center;"><b>Android</b></td>
+        <td width="85">  </td>
+        <td style="text-align: center;"><b>iOS</b></td>
+    </tr>
+    <tr height="10" ></tr>
+    
+    <tr>
+        <td><a href="http://54.169.13.221:8088/say/say/SAY-google-release.apk">
+                <img alt="Get it on AWS" src="/images/say/screenshoot/say-android.png" />
+            </a>
+        </td>
+        <td width="85">  </td>
+        <td><a href="https://itunes.apple.com/us/app/say/id914290055?l=zh&ls=1&mt=8">
+                <img alt="Get it on App Store" src="/images/say/screenshoot/say-ios.png" />
+            </a>
+        </td>
+    </tr>
 
-<pre><code>2014-02-25 13:14:15.503 SAY[3725:70b] *** Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: '-[__NSCFArray insertObject:atIndex:]: mutating method sent to immutable object'
-</code></pre>
+    
+    <tr>
+        <td style="text-align: center;"><a href="https://play.google.com/store/apps/details?id=com.say">
+                <img style="vertical-align:middle;" src="/images/say/screenshoot/en_generic_rgb_wo_60.png" />
+            </a>
+        </td>
+        <td width="85">  </td>
+        <td style="text-align: center;"> <a href="https://itunes.apple.com/us/app/say/id914290055?l=zh&ls=1&mt=8">
+                <img style="vertical-align:middle;" src="/images/say/screenshoot/badge_appstore-lrg_60.png" />
+            </a>
+        </td>
+    </tr>   
+</table>
 
-<p>错误出在这一行代码</p>
 
-<pre><code>[userList addObject:self.email];
-</code></pre>
 
-<p>此时userList实际上是NSArray的实例，虽然它被显示的声明为NSMutableArray*.</p>
-
-<p>安全的写法为</p>
-
-<pre><code>NSMutableArray *userList = [NSMutableArray arrayWithArray:[userDefaults objectForKey:@"userList"]];
-</code></pre>
 </div>
 
 </article>
@@ -183,7 +225,7 @@
 
   <section>
    <!-- start -->
-<div class="ds-thread" data-thread-key="/blog/2014/02/25/iosshi-yong-nsuserdefaultsde-xiao-xi-jie-wen-ti" data-title="iOS使用NSUserDefaults的小细节问题" data-url="http://ijarobot.github.io/blog/2014/02/25/iosshi-yong-nsuserdefaultsde-xiao-xi-jie-wen-ti/"></div>
+<div class="ds-thread" data-thread-key="/blog/2014/11/07/say-project" data-title="SAY Project" data-url="http://ijarobot.github.io/blog/2014/11/07/say-project/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
