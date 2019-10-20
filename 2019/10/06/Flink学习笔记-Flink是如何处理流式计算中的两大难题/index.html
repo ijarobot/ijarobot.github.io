@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Flink学习笔记 -- Flink是如何处理流式计算中的两大难题"><meta name="keywords" content><meta name="author" content="Jialin"><meta name="copyright" content="Jialin"><title>Flink学习笔记 -- Flink是如何处理流式计算中的两大难题 | Jialin’s Blog</title><link rel="shortcut icon" href="/favicon.png"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#两个笑话"><span class="toc-number">1.</span> <span class="toc-text">两个笑话</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Leon-Bambrick"><span class="toc-number">1.1.</span> <span class="toc-text">Leon Bambrick</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mathias-Verraes"><span class="toc-number">1.2.</span> <span class="toc-text">Mathias Verraes</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#两个笑话4个难题"><span class="toc-number">2.</span> <span class="toc-text">两个笑话4个难题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#流式计算语义下-两个难题的定义"><span class="toc-number">3.</span> <span class="toc-text">流式计算语义下, 两个难题的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flink是如何处理流式计算中的两大难题"><span class="toc-number">4.</span> <span class="toc-text">Flink是如何处理流式计算中的两大难题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题一、精确一致的消息处理"><span class="toc-number">4.1.</span> <span class="toc-text">问题一、精确一致的消息处理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Checkpoint"><span class="toc-number">4.1.1.</span> <span class="toc-text">Checkpoint</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Barriers"><span class="toc-number">4.1.2.</span> <span class="toc-text">Barriers</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#状态"><span class="toc-number">4.1.3.</span> <span class="toc-text">状态</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#异步状态快照"><span class="toc-number">4.1.4.</span> <span class="toc-text">异步状态快照</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#故障恢复"><span class="toc-number">4.1.5.</span> <span class="toc-text">故障恢复</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题二、如何处理一定程度上乱序的消息"><span class="toc-number">4.2.</span> <span class="toc-text">问题二、如何处理一定程度上乱序的消息</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#时间"><span class="toc-number">4.2.1.</span> <span class="toc-text">时间</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#窗口"><span class="toc-number">4.3.</span> <span class="toc-text">窗口</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Watermark"><span class="toc-number">4.3.1.</span> <span class="toc-text">Watermark</span></a></li></ol></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.jpg"></div><div class="author-info__name text-center">Jialin</div><div class="author-info__description text-center">我要coding到60岁！</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">13</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">1</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">9</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Jialin’s Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">Flink学习笔记 -- Flink是如何处理流式计算中的两大难题</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-10-06</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h3 id="两个笑话"><a href="#两个笑话" class="headerlink" title="两个笑话"></a>两个笑话</h3><h4 id="Leon-Bambrick"><a href="#Leon-Bambrick" class="headerlink" title="Leon Bambrick"></a>Leon Bambrick</h4><p>There are 2 hard problems in computer science: cache invalidation, naming things, and off-by-1 errors.</p>
+<p>计算机科学中有2个难题：<code>缓存失效</code>，<code>命名</code>，以及大小差1错误。</p>
+<h4 id="Mathias-Verraes"><a href="#Mathias-Verraes" class="headerlink" title="Mathias Verraes"></a>Mathias Verraes</h4><p>There are only two hard problems in distributed systems: 2.Exactly-once delivery  1.Guaranteed order of messages  2.Exactly-once delivery</p>
+<p>分布式系统只有两个难题：<code>2.消息的精确一次投递</code> <code>1.保证消息的顺序</code> <code>2.消息的精确一次投递</code>。</p>
+<h3 id="两个笑话4个难题"><a href="#两个笑话4个难题" class="headerlink" title="两个笑话4个难题"></a>两个笑话4个难题</h3><p><code>命名</code>, <code>缓存失效</code>，<code>保证消息的顺序</code>, <code>消息的精确一次投递</code>.<br>命名，这个难题无处不在。大到系统名、子系统名、工程名，小到包名、接口名、类名、变量名、常量名、方法名…它时刻出现在我们编码的过程中。<br>这个难道之所以难。首先，严格上来说它根本不是一个计算机科学范畴内的事，计算机科学怎么能轻松的搞定它呢。<br>命名之所以如此重要，是因为命名中可以使用隐喻等修辞，在短短一个名字中包含大量的信息。好的隐喻通常只用一个词就可以形象、直观表明一个系统/接口的功用甚至实现原理。<br>扯得有点远了…</p>
+<p>剩下的这仨 <code>缓存失效</code>，<code>保证消息的顺序</code>, <code>消息的精确一次投递</code>，都是与分布式系统相关的。<br><code>缓存失效</code>，涉及数据一致性的问题，分布式环境下缓存存储的数据或者说状态是集中的，但是操作却是分开的在各个应用的实例中进行。所以，缓存失效问题背后的根本问题是异步系统的状态同步的问题。</p>
+<p><code>消息的精确一次投递</code>, 也是一致性问题，比如一个事件计数计算每个事件加1，同一个事件被发送的两次，结果自然是不正确的。</p>
+<p><code>保证消息的顺序</code>，如果不能保证消息是有序的，大家一定看不懂微信群中的消息，答非所问、鸡同鸭讲。</p>
+<p>总的来说，分布式还是两大难题 <code>消息的精确一次投递</code>，<code>保证消息的顺序</code>，通俗来讲就是<code>一致性问题</code>与<code>顺序问题</code>。</p>
+<p>根据 Flink 官方的介绍 <code>Apache Flink 是一个框架和分布式处理引擎，用于在无边界和有边界数据流上进行有状态的计算。</code> 它是一个分布式的流式处理引擎，身为一个分布式他是如何处理这两大难题的?</p>
+<h3 id="流式计算语义下-两个难题的定义"><a href="#流式计算语义下-两个难题的定义" class="headerlink" title="流式计算语义下, 两个难题的定义"></a>流式计算语义下, 两个难题的定义</h3><p>语言是博大精深的，在不同的语境下相同的词或句子表达的意思是不一样。<br>流式计算也是分布式系统中的一类，或是某大型分布式系统中的其中一块。因为流式计算重在计算（并不像MQ系统的职责是消息的转发）,所以在流式计算的语义下可将两个问题做一个简单的映射或转换。</p>
+<p><code>消息的精确一次投递</code> &lt;–&gt; <code>精确一致的消息处理</code></p>
+<p><code>保证消息的顺序</code> &lt;–&gt; <code>如何处理一定程度上乱序的消息</code></p>
+<h3 id="Flink是如何处理流式计算中的两大难题"><a href="#Flink是如何处理流式计算中的两大难题" class="headerlink" title="Flink是如何处理流式计算中的两大难题"></a>Flink是如何处理流式计算中的两大难题</h3><h4 id="问题一、精确一致的消息处理"><a href="#问题一、精确一致的消息处理" class="headerlink" title="问题一、精确一致的消息处理"></a>问题一、<code>精确一致的消息处理</code></h4><p><code>精确一致的消息处理</code> (英文:Exactly-once message processing)</p>
+<p>针对该问题，Flink给出的答案是基于Checkpoint容错机制</p>
+<p>Apache Flink 提供了可以恢复数据流应用到一致状态的容错机制。确保在发生故障时，程序的每条记录只会作用于状态一次</p>
+<p>容错机制通过持续创建分布式数据流的快照来实现。对于状态占用空间小的流应用，这些快照非常轻量，可以高频率创建而对性能影响很小。流计算应用的状态保存在一个可配置的环境，如：master 节点或者 HDFS上。</p>
+<p>在遇到程序故障时（如机器、网络、软件等故障），Flink 停止分布式数据流。系统重启所有 operator ，重置其到最近成功的 checkpoint。输入重置到相应的状态快照位置。保证被重启的并行数据流中处理的任何一个 消息记录都不是 checkpoint 状态之前的一部分。</p>
+<h5 id="Checkpoint"><a href="#Checkpoint" class="headerlink" title="Checkpoint"></a>Checkpoint</h5><p>Flink 容错机制的核心就是持续创建分布式数据流及其状态的一致快照。这些快照在系统遇到故障时，充当可以回退的一致性检查点（checkpoint）。Lightweight Asynchronous Snapshots for Distributed Dataflows 描述了Flink 创建快照的机制。此论文是受分布式快照算法 Chandy-Lamport 启发，并针对 Flink 执行模型量身定制。</p>
+<h5 id="Barriers"><a href="#Barriers" class="headerlink" title="Barriers"></a>Barriers</h5><p>Flink 分布式快照的核心概念之一就是数据栅栏（barrier）。这些 barrier 被插入到数据流中，作为数据流的一部分和数据一起向下流动。Barrier 不会干扰正常数据，数据流严格有序。一个 barrier 把数据流分割成两部分：一部分进入到当前快照，另一部分进入下一个快照。每一个 barrier 都带有快照 ID，并且 barrier 之前的数据都进入了此快照。Barrier 不会干扰数据流处理，所以非常轻量。多个不同快照的多个 barrier 会在流中同时出现，即多个快照可能同时创建。</p>
+<p><img src="https://ci.apache.org/projects/flink/flink-docs-release-1.3/fig/stream_barriers.svg" alt></p>
+<p>Barrier 在数据源端插入，当 snapshot n 的 barrier 插入后，系统会记录当前 snapshot 位置值 n (用Sn表示)。例如，在 Apache Kafka 中，这个变量表示某个分区中最后一条数据的偏移量。这个位置值 Sn 会被发送到一个称为 checkpoint coordinator 的模块。(即 Flink 的 JobManager).</p>
+<p>然后 barrier 继续往下流动，当一个 operator 从其输入流接收到所有标识 snapshot n 的 barrier 时，它会向其所有输出流插入一个标识 snapshot n 的 barrier。当 sink operator （DAG 流的终点）从其输入流接收到所有 barrier n 时，它向 the checkpoint coordinator 确认 snapshot n 已完成。当所有 sink 都确认了这个快照，快照就被标识为完成。</p>
+<p><img src="https://ci.apache.org/projects/flink/flink-docs-release-1.3/fig/stream_aligning.svg" alt></p>
+<p>接收超过一个输入流的 operator 需要基于 barrier 对齐（align）输入。参见上图：</p>
+<ul>
+<li><p>operator 只要一接收到某个输入流的 barrier n，它就不能继续处理此数据流后续的数据，直到 operator 接收到其余流的 barrier n。否则会将属于 snapshot n 的数据和 snapshot n+1的搞混</p>
+</li>
+<li><p>barrier n 所属的数据流先不处理，从这些数据流中接收到的数据被放入接收缓存里（input buffer）</p>
+</li>
+<li><p>当从最后一个流中提取到 barrier n 时，operator 会发射出所有等待向后发送的数据，然后发射snapshot n 所属的 barrier</p>
+</li>
+<li><p>经过以上步骤，operator 恢复所有输入流数据的处理，优先处理输入缓存中的数据</p>
+</li>
+</ul>
+<h5 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h5><p>operator 包含任何形式的状态，这些状态都必须包含在快照中。状态有很多种形式：</p>
+<ul>
+<li>用户自定义状态：由 transformation 函数例如（ map() 或者 filter())直接创建或者修改的状态。用户自定义状态可以是：转换函数中的 Java 对象的一个简单变量或者函数关联的 key/value 状态。参见 State in Streaming Applications</li>
+<li>系统状态：这种状态是指作为 operator 计算中一部分缓存数据。典型例子就是： 窗口缓存（window buffers），系统收集窗口对应数据到其中，直到窗口计算和发射。</li>
+</ul>
+<p>operator 在收到所有输入数据流中的 barrier 之后，在发射 barrier 到其输出流之前对其状态进行快照。此时，在 barrier 之前的数据对状态的更新已经完成，不会再依赖 barrier 之前数据。由于快照可能非常大，所以后端存储系统可配置。默认是存储到 JobManager 的内存中，但是对于生产系统，需要配置成一个可靠的分布式存储系统（例如 HDFS）。状态存储完成后，operator 会确认其 checkpoint 完成，发射出 barrier 到后续输出流。</p>
+<p>快照现在包含了：</p>
+<ul>
+<li>对于并行输入数据源：快照创建时数据流中的位置偏移</li>
+<li>对于 operator：存储在快照中的状态指针</li>
+</ul>
+<p><img src="https://ci.apache.org/projects/flink/flink-docs-release-1.3/fig/checkpointing.svg" alt></p>
+<h5 id="异步状态快照"><a href="#异步状态快照" class="headerlink" title="异步状态快照"></a>异步状态快照</h5><p>我们注意到上面描述的机制意味着当 operator 向后端存储快照时，会停止处理输入的数据。这种同步操作会在每次快照创建时引入延迟。</p>
+<p>我们完全可以在存储快照时，让 operator 继续处理数据，让快照存储在后台异步运行。为了做到这一点，operator 必须能够生成一个后续修改不影响之前状态的状态对象。例如 RocksDB 中使用的写时复制（ copy-on-write ）类型的数据结构。</p>
+<p>接收到输入的 barrier 时，operator 异步快照复制出的状态。然后立即发射 barrier 到输出流，继续正常的流处理。一旦后台异步快照完成，它就会向 checkpoint coordinator（JobManager）确认 checkpoint 完成。现在 checkpoint 完成的充分条件是：所有 sink 接收到了 barrier，所有有状态 operator 都确认完成了状态备份（可能会比 sink 接收到 barrier 晚）。</p>
+<p>更多状态快照参见：<a href="https://ci.apache.org/projects/flink/flink-docs-release-1.9/zh/concepts/runtime.html#state-backends" target="_blank" rel="noopener">状态后端</a></p>
+<h5 id="故障恢复"><a href="#故障恢复" class="headerlink" title="故障恢复"></a>故障恢复</h5><p>在这种容错机制下的错误恢复很明显：一旦遇到故障，Flink 选择最近一个完成的 checkpoint k。系统重新部署整个分布式数据流，重置所有 operator 的状态到 checkpoint k。数据源被置为从 Sk 位置读取。例如在 Apache Kafka 中，意味着让消费者从 Sk 处偏移开始读取。</p>
+<p>如果是增量快照，operator 需要从最新的全量快照回复，然后对此状态进行一系列增量更新。</p>
+<p>有关更多信息，参阅 <a href="https://ci.apache.org/projects/flink/flink-docs-release-1.9/zh/dev/task_failure_recovery.html" target="_blank" rel="noopener">Task 故障恢复</a></p>
+<h4 id="问题二、如何处理一定程度上乱序的消息"><a href="#问题二、如何处理一定程度上乱序的消息" class="headerlink" title="问题二、如何处理一定程度上乱序的消息"></a>问题二、<code>如何处理一定程度上乱序的消息</code></h4><p>针对该问题，Flink给出的答案是 Event Time + Window + Watermark</p>
+<h5 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h5><p>Flink中时间分三类<br><img src="/images/pasted-3.png" alt></p>
+<p>Event Time：创建事件的时间。它通常由事件中的时间戳描述，例如由生产传感器或生产服务附加。Flink通过时间戳分配器访问事件时间戳。</p>
+<p>Ingestion Time:事件在源操作员处输入Flink数据流的时间。</p>
+<p>Processing Time: 执行基于时间的操作的每个操作员的本地时间。</p>
+<h4 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a><strong>窗口</strong></h4><p><img src="/images/pasted-4.png" alt></p>
+<p>聚合事件（例如，计数，总和）在流上的工作方式与批处理方式不同。例如，不可能计算流中的所有元素，因为流通常是无限的（无界）。相反，流上的聚合（计数，总和等）由窗口限定，例如“在最后5分钟内计数”或“最后100个元素的总和”。</p>
+<p>Windows可以是时间驱动的（例如：每30秒）或数据驱动（例如：每100个元素）。一个典型地区分不同类型的窗口，例如翻滚窗口（没有重叠）， 滑动窗口（具有重叠）和会话窗口（由不活动的间隙打断）。</p>
+<p><code>Time Window</code>有以下4种<br>Tumbling Window – 翻转时间窗口，或定长时间窗口</p>
+<p>Sliding Window – 滑动时间窗口</p>
+<p>Session Window  – 会话时间窗口</p>
+<p>Global Window – 全局时间窗口</p>
+<h5 id="Watermark"><a href="#Watermark" class="headerlink" title="Watermark"></a>Watermark</h5><p>Watermark是一种衡量Event Time进展的机制，它是数据本身的一个隐藏属性，通常基于Event Time的数据。</p>
+<p>而正确的处理乱序事件，通常用watermark机制结合window来实现。</p>
+<p>流处理从事件产生，到流经source，再到operator，中间是有一个过程和时间的。虽然大部分情况下，流到operator的数据都是按照事件产生的时间顺序来的，但是也不排除由于网络、背压等原因，导致乱序的产生。甚至有些业务场景在source侧数据已经乱序了(从Event Time的角度看)</p>
+<p>但是对于晚到的数据，我们又不能无限期的等下去，必须要有个机制来保证一个特定的时间后，必须触发window去进行计算了。这个特别的机制，就是watermark。</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Jialin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yoursite.com/2019/10/06/Flink学习笔记-Flink是如何处理流式计算中的两大难题/">http://yoursite.com/2019/10/06/Flink学习笔记-Flink是如何处理流式计算中的两大难题/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yoursite.com">Jialin’s Blog</a>！</span></div></div><div class="post-meta__tag-list"></div><nav id="pagination"><div class="next-post pull-right"><a href="/2019/10/03/Flink学习笔记-Flink是啥/"><span>Flink学习笔记--Flink是啥</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2014 - 2019 By Jialin</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="icp"><a><span></span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script></body></html>
