@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-12-26T03:38:56.526Z" agent="5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="y6-Aj-MVMdhYaCcKk1XD" version="14.1.2" type="github">
+<mxfile host="app.diagrams.net" modified="2020-12-26T04:12:45.755Z" agent="5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="gHg39hBcxy25_oj6lzN9" version="14.1.2" type="github">
   <diagram id="mnzwAtgZ29WQV7C6TWUw" name="第 1 页">
-    <mxGraphModel dx="1673" dy="-234" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2370" dy="156" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -352,6 +352,27 @@
         </mxCell>
         <mxCell id="fk_H2LYI3ywtEM2PlVDK-82" value="&lt;span style=&quot;color: rgb(0 , 0 , 0) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 14px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: center ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(248 , 249 , 250) ; display: inline ; float: none&quot;&gt;监控内部链路&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1504" y="1602.41" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fk_H2LYI3ywtEM2PlVDK-83" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=green;imageAspect=0;aspect=fixed;image=https://avatars1.githubusercontent.com/u/49998002?s=200&amp;v=4;rounded=1;strokeWidth=1;fillColor=#77e6cb4d;" vertex="1" parent="1">
+          <mxGeometry x="1013.5799999999999" y="2009.3300000000002" width="36" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="fk_H2LYI3ywtEM2PlVDK-85" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=green;imageAspect=0;aspect=fixed;image=https://avatars1.githubusercontent.com/u/49998002?s=200&amp;v=4;rounded=1;strokeWidth=1;fillColor=#77e6cb4d;" vertex="1" parent="1">
+          <mxGeometry x="1399.5" y="2363" width="36" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="fk_H2LYI3ywtEM2PlVDK-86" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=green;imageAspect=0;aspect=fixed;image=https://docs.honeycomb.io/logos/opentracing-sm.png;rounded=1;strokeWidth=1;fillColor=#77e6cb4d;" vertex="1" parent="1">
+          <mxGeometry x="1399.5" y="2415" width="36" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="fk_H2LYI3ywtEM2PlVDK-87" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=green;imageAspect=0;aspect=fixed;image=https://opencensus.io/img/logo-sm.svg;rounded=1;strokeWidth=1;fillColor=#77e6cb4d;" vertex="1" parent="1">
+          <mxGeometry x="1399.5" y="2476" width="36" height="33.55" as="geometry" />
+        </mxCell>
+        <mxCell id="fk_H2LYI3ywtEM2PlVDK-88" value="&lt;div style=&quot;text-align: center&quot;&gt;&lt;font face=&quot;helvetica&quot; style=&quot;font-size: 16px&quot;&gt;遵循OpenTelemetry标准&lt;/font&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="2363" width="184.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fk_H2LYI3ywtEM2PlVDK-89" value="&lt;div style=&quot;text-align: center&quot;&gt;&lt;font face=&quot;helvetica&quot; style=&quot;font-size: 16px&quot;&gt;兼容OpenTracing&lt;/font&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="2418" width="184.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fk_H2LYI3ywtEM2PlVDK-90" value="&lt;div style=&quot;text-align: center&quot;&gt;&lt;font face=&quot;helvetica&quot; style=&quot;font-size: 16px&quot;&gt;兼容OpenCensus&lt;/font&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="2476" width="184.5" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
