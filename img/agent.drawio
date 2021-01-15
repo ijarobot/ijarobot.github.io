@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-01-15T10:16:59.941Z" agent="5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="qCW-_DXSK8y1lZTbCCza" version="14.1.2" type="github">
+<mxfile host="app.diagrams.net" modified="2021-01-15T10:17:56.651Z" agent="5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="SOrqJC-E1ebVqGDA8W_W" version="14.1.2" type="github">
   <diagram id="gwXjZ_KhgnTB7TFwKm6p" name="第 1 页">
     <mxGraphModel dx="1634" dy="-374" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -169,14 +169,14 @@
         <mxCell id="6hJ7_hepYG0XDSpaTRYl-40" value="&lt;&lt;PinpointAgent&gt;&gt;&#xa;字节码增强" style="shadow=1;fillColor=#77e6cb;strokeColor=none;fontSize=15;" vertex="1" parent="1">
           <mxGeometry x="287.75" y="3256" width="170" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="6hJ7_hepYG0XDSpaTRYl-41" value="&lt;&lt;PinpointAgent-Plugins&gt;&gt;&#xa;&#xa;rmb-plugin&#xa;mysql-jdbc-driver-plugin&#xa;mariadb-jdbc-driver-plugin&#xa;redis-plugin&#xa;tomcat-plugin&#xa;spring-plugin&#xa;httpclient3-plugin&#xa;httpclient4-plugin&#xa;jdk-http-plugin&#xa;okhttp-plugin&#xa;user-plugin&#xa;&#xa;undertow-plugin&#xa;undertow-servlet-plugin&#xa;&#xa;dubbo-plugin&#xa;hbase-plugin&#xa;kafka-plugin&#xa;openid-plugin" style="shadow=1;strokeColor=none;fillColor=#E6D0DE;fontSize=15;" vertex="1" parent="1">
-          <mxGeometry x="648.75" y="3087.5" width="204.25" height="387" as="geometry" />
+        <mxCell id="6hJ7_hepYG0XDSpaTRYl-41" value="&lt;&lt;PinpointAgent-Plugins&gt;&gt;&#xa;&#xa;rmb-plugin&#xa;mysql-jdbc-driver-plugin&#xa;mariadb-jdbc-driver-plugin&#xa;redis-plugin&#xa;tomcat-plugin&#xa;spring-plugin&#xa;httpclient3-plugin&#xa;httpclient4-plugin&#xa;jdk-http-plugin&#xa;okhttp-plugin&#xa;user-plugin" style="shadow=1;strokeColor=none;fillColor=#E6D0DE;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="657" y="3139.25" width="204.25" height="283.5" as="geometry" />
         </mxCell>
         <mxCell id="6hJ7_hepYG0XDSpaTRYl-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;fontSize=15;" edge="1" parent="1" source="6hJ7_hepYG0XDSpaTRYl-43" target="6hJ7_hepYG0XDSpaTRYl-61">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="6hJ7_hepYG0XDSpaTRYl-43" value="&lt;&lt;PinpointAgent-Profiler&gt;&gt;&#xa;Agent Info" style="shadow=1;fillColor=#77e6cb;strokeColor=none;fontStyle=0;fontSize=15;" vertex="1" parent="1">
-          <mxGeometry x="653" y="3507" width="170" height="50" as="geometry" />
+          <mxGeometry x="653" y="3509" width="170" height="50" as="geometry" />
         </mxCell>
         <mxCell id="6hJ7_hepYG0XDSpaTRYl-48" value="Pinpoint Collector" style="shadow=1;fillColor=#77e6cb;strokeColor=none;fontStyle=0;fontSize=15;" vertex="1" parent="1">
           <mxGeometry x="1524.25" y="3346" width="170" height="50" as="geometry" />
@@ -211,7 +211,7 @@
           <mxGeometry x="506.25" y="3487" width="70" height="22" as="geometry" />
         </mxCell>
         <mxCell id="6hJ7_hepYG0XDSpaTRYl-59" value="管理台" style="shadow=1;fillColor=#77e6cb;strokeColor=none;fontStyle=0;fontSize=15;" vertex="1" parent="1">
-          <mxGeometry x="1538" y="3495" width="170" height="50" as="geometry" />
+          <mxGeometry x="1526.25" y="3495" width="170" height="50" as="geometry" />
         </mxCell>
         <mxCell id="6hJ7_hepYG0XDSpaTRYl-60" value="" style="endArrow=classic;html=1;fontColor=#007FFF;exitX=0;exitY=0.5;exitDx=0;exitDy=0;strokeColor=#77E6CB;strokeWidth=2;fontSize=15;" edge="1" parent="1" source="6hJ7_hepYG0XDSpaTRYl-59" target="6hJ7_hepYG0XDSpaTRYl-61">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
