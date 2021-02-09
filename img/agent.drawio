@@ -1,9 +1,12 @@
-<mxfile host="app.diagrams.net" modified="2021-02-05T06:48:28.529Z" agent="5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="pSHR9Jrl-RTgJkGgNUr5" version="14.1.2" type="github">
+<mxfile host="app.diagrams.net" modified="2021-02-09T02:10:39.990Z" agent="5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="EO8wWzxOhdo4I1qFZn28" version="14.1.2" type="github">
   <diagram id="gwXjZ_KhgnTB7TFwKm6p" name="第 1 页">
-    <mxGraphModel dx="1634" dy="-1600" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2082" dy="-1307" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-49" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#CCFFFF;fontSize=12;align=left;opacity=50;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="576" y="4558" width="747" height="373" as="geometry" />
+        </mxCell>
         <mxCell id="6hJ7_hepYG0XDSpaTRYl-1" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FF6666;fontColor=#007FFF;fillColor=#D5E8D4;fontSize=12;" parent="1" vertex="1">
           <mxGeometry x="506.25" y="2701" width="571" height="325" as="geometry" />
         </mxCell>
@@ -279,6 +282,114 @@
         </mxCell>
         <mxCell id="Koj_lWtVOOEXYr1vXT_N-17" value="start()" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="915" y="3771" width="41" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=12;" edge="1" parent="1" source="Koj_lWtVOOEXYr1vXT_N-18" target="Koj_lWtVOOEXYr1vXT_N-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-18" value="启动" style="shadow=1;fillColor=#77e6cb;strokeColor=none;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="83" y="4579" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=12;" edge="1" parent="1" source="Koj_lWtVOOEXYr1vXT_N-19" target="Koj_lWtVOOEXYr1vXT_N-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-19" value="加载配置" style="shadow=1;fillColor=#77e6cb;strokeColor=none;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="343" y="4579" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=12;" edge="1" parent="1" source="Koj_lWtVOOEXYr1vXT_N-20" target="Koj_lWtVOOEXYr1vXT_N-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-20" value="加载Jar" style="shadow=1;fillColor=#77e6cb;strokeColor=none;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="603" y="4579" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=12;" edge="1" parent="1" source="Koj_lWtVOOEXYr1vXT_N-21" target="Koj_lWtVOOEXYr1vXT_N-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-21" value="解析插件配置" style="shadow=1;fillColor=#77e6cb;strokeColor=none;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="863" y="4579" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=12;" edge="1" parent="1" source="Koj_lWtVOOEXYr1vXT_N-22" target="Koj_lWtVOOEXYr1vXT_N-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-22" value="加载插件" style="shadow=1;fillColor=#77e6cb;strokeColor=none;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1123" y="4579" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-27" value="启动时注入(preMain)" style="shadow=1;strokeColor=none;fontSize=12;fillColor=#CCFFFF;" vertex="1" parent="1">
+          <mxGeometry x="83" y="4684" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-28" value="运行态注入(AgentMain)" style="shadow=1;strokeColor=none;fontSize=12;fillColor=#CCFFFF;" vertex="1" parent="1">
+          <mxGeometry x="83" y="4771" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-29" value="本地config文件" style="shadow=1;strokeColor=none;fontSize=12;fillColor=#CCFFFF;" vertex="1" parent="1">
+          <mxGeometry x="343" y="4684" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-30" value="启动参数" style="shadow=1;strokeColor=none;fontSize=12;fillColor=#CCFFFF;" vertex="1" parent="1">
+          <mxGeometry x="343" y="4771" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-57" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontSize=12;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;endArrow=none;endFill=0;strokeColor=#808080;" edge="1" parent="1" source="Koj_lWtVOOEXYr1vXT_N-31" target="Koj_lWtVOOEXYr1vXT_N-45">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1776.8888888888887" y="4914.777777777777" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="428" y="4954" />
+              <mxPoint x="1728" y="4954" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-31" value="服务端配置" style="shadow=1;strokeColor=none;fontSize=12;fillColor=#CCFFFF;" vertex="1" parent="1">
+          <mxGeometry x="343" y="4858" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-32" value="Agent自身Jar" style="shadow=1;strokeColor=none;fontSize=12;fillColor=#CCFFFF;" vertex="1" parent="1">
+          <mxGeometry x="603" y="4684" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-33" value="依赖的Jar" style="shadow=1;strokeColor=none;fontSize=12;fillColor=#CCFFFF;" vertex="1" parent="1">
+          <mxGeometry x="603" y="4771" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-34" value="插件Jar" style="shadow=1;strokeColor=none;fontSize=12;fillColor=#CCFFFF;" vertex="1" parent="1">
+          <mxGeometry x="603" y="4858" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-35" value="获取目标类" style="shadow=1;strokeColor=none;fontSize=12;fillColor=#CCFFFF;" vertex="1" parent="1">
+          <mxGeometry x="863" y="4684" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=12;" edge="1" parent="1" source="Koj_lWtVOOEXYr1vXT_N-38" target="Koj_lWtVOOEXYr1vXT_N-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-38" value="字节码增强" style="shadow=1;fillColor=#77e6cb;strokeColor=none;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1383" y="4579" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-39" value="自定义ClassLoader" style="shadow=1;strokeColor=none;fontSize=12;fillColor=#CCFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1123" y="4684" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-40" value="解决Class的可见性&#xa;且不影响应用类加载" style="shadow=1;strokeColor=none;fontSize=12;fillColor=#CCFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1123" y="4771" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=12;" edge="1" parent="1" source="Koj_lWtVOOEXYr1vXT_N-42" target="Koj_lWtVOOEXYr1vXT_N-46">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-42" value="启动后台任务" style="shadow=1;fillColor=#77e6cb;strokeColor=none;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1643" y="4579" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-44" value="数据采集发送" style="shadow=1;strokeColor=none;fontSize=12;fillColor=#CCFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1643" y="4684" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-45" value="心跳" style="shadow=1;strokeColor=none;fontSize=12;fillColor=#CCFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1643" y="4771" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-46" value="注册JVM关闭hook" style="shadow=1;fillColor=#77e6cb;strokeColor=none;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1903" y="4579" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-50" value="&lt;span style=&quot;font-size: 18px&quot;&gt;启动&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="121" y="4441" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-51" value="&lt;font style=&quot;font-size: 18px&quot;&gt;技术要点&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="558" y="4392" width="126" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-52" value="&lt;div style=&quot;text-align: left&quot;&gt;&lt;span style=&quot;font-size: 18px ; font-weight: normal&quot;&gt;ClassLoader&lt;/span&gt;&lt;/div&gt;&lt;font style=&quot;font-size: 18px ; font-weight: normal&quot;&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;&amp;nbsp; 双亲委派&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;&amp;nbsp; 类的唯一性、可见性&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;&amp;nbsp; 不影响应用的类加载&lt;/span&gt;&lt;/div&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="578" y="4423" width="191" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-55" value="&lt;div&gt;&lt;span style=&quot;font-size: 18px ; font-weight: normal&quot;&gt;微内核(插件机制)&lt;/span&gt;&lt;/div&gt;&lt;font&gt;&lt;div style=&quot;font-size: 18px ; font-weight: normal&quot;&gt;&lt;span&gt;&amp;nbsp; SPI&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 18px ; font-weight: normal&quot;&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span&gt;插件的规范&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 18px ; font-weight: normal&quot;&gt;&lt;span&gt;&amp;nbsp; 插件的独立性&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 18px ; font-weight: normal&quot;&gt;&lt;span&gt;&amp;nbsp; 插件之间的数据传递（消息头、异步调用ThreadLocal）&lt;/span&gt;&lt;/div&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="827" y="4423" width="466" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-56" value="关闭后台任务" style="shadow=1;strokeColor=none;fontSize=12;fillColor=#CCFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1903" y="4684" width="170" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
