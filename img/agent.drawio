@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-02-09T02:12:32.398Z" agent="5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="tnLandsbimveyiCBU7GQ" version="14.1.2" type="github">
+<mxfile host="app.diagrams.net" modified="2021-02-09T02:23:13.265Z" agent="5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="kQ53VFemuTg7M7RepxNz" version="14.1.2" type="github">
   <diagram id="gwXjZ_KhgnTB7TFwKm6p" name="第 1 页">
     <mxGraphModel dx="2082" dy="-1455" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -390,6 +390,18 @@
         </mxCell>
         <mxCell id="Koj_lWtVOOEXYr1vXT_N-56" value="关闭后台任务" style="shadow=1;strokeColor=none;fontSize=12;fillColor=#CCFFFF;" vertex="1" parent="1">
           <mxGeometry x="1903" y="4684" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-60" value="ByteBuddy 字节增强" style="shadow=1;strokeColor=none;fontSize=12;fillColor=#CCFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1383" y="4684" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-61" value="ByteBuddy 字节码恢复" style="shadow=1;strokeColor=none;fontSize=12;fillColor=#CCFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1383" y="4771" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-62" value="&lt;font style=&quot;font-size: 18px&quot;&gt;字节码增强&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="83" y="5012" width="101" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-63" value="ByteBuddy Adivce" style="shadow=1;strokeColor=none;fontSize=12;fillColor=#CCFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1383" y="4858" width="170" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
