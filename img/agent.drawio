@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-02-09T02:10:39.990Z" agent="5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="EO8wWzxOhdo4I1qFZn28" version="14.1.2" type="github">
+<mxfile host="app.diagrams.net" modified="2021-02-09T02:12:32.398Z" agent="5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="tnLandsbimveyiCBU7GQ" version="14.1.2" type="github">
   <diagram id="gwXjZ_KhgnTB7TFwKm6p" name="第 1 页">
-    <mxGraphModel dx="2082" dy="-1307" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2082" dy="-1455" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -376,8 +376,8 @@
         <mxCell id="Koj_lWtVOOEXYr1vXT_N-46" value="注册JVM关闭hook" style="shadow=1;fillColor=#77e6cb;strokeColor=none;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="1903" y="4579" width="170" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="Koj_lWtVOOEXYr1vXT_N-50" value="&lt;span style=&quot;font-size: 18px&quot;&gt;启动&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="121" y="4441" width="40" height="20" as="geometry" />
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-50" value="&lt;span style=&quot;font-size: 18px&quot;&gt;启动流程&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="90" y="4503" width="101" height="20" as="geometry" />
         </mxCell>
         <mxCell id="Koj_lWtVOOEXYr1vXT_N-51" value="&lt;font style=&quot;font-size: 18px&quot;&gt;技术要点&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="558" y="4392" width="126" height="20" as="geometry" />
