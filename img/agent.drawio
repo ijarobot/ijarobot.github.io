@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-02-24T07:46:46.877Z" agent="5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="e-9in0jhFdG-GYXSD04W" version="14.1.2" type="github">
+<mxfile host="app.diagrams.net" modified="2021-02-24T08:09:15.875Z" agent="5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="8emQt0Fa6LyvAHp3YtFN" version="14.1.2" type="github">
   <diagram id="gwXjZ_KhgnTB7TFwKm6p" name="第 1 页">
-    <mxGraphModel dx="1816" dy="-1307" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2082" dy="-1518" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -231,8 +231,8 @@
         <mxCell id="Koj_lWtVOOEXYr1vXT_N-1" value="AgentMain" style="shadow=1;fillColor=#77e6cb;strokeColor=none;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="21" y="3767" width="170" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="Koj_lWtVOOEXYr1vXT_N-2" value="&lt;font style=&quot;font-size: 18px&quot;&gt;Agent&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="47" y="3720" width="40" height="20" as="geometry" />
+        <mxCell id="Koj_lWtVOOEXYr1vXT_N-2" value="&lt;font style=&quot;font-size: 18px&quot;&gt;Elastic APM Agent&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="47" y="3720" width="184" height="20" as="geometry" />
         </mxCell>
         <mxCell id="Koj_lWtVOOEXYr1vXT_N-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=12;" edge="1" parent="1" source="Koj_lWtVOOEXYr1vXT_N-3" target="Koj_lWtVOOEXYr1vXT_N-7">
           <mxGeometry relative="1" as="geometry" />
