@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-04-26T09:55:46.779Z" agent="5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36" etag="Wt_5TRLPCIwcB6WQXtnQ" version="14.6.6" type="github">
+<mxfile host="app.diagrams.net" modified="2021-04-29T07:48:11.736Z" agent="5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36" etag="DgQA-RrePTpBtO9hJsfM" version="14.6.6" type="github">
   <diagram id="7zbkWKNnDVuo_YYhG6Th" name="第 1 页">
-    <mxGraphModel dx="2031" dy="-33" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1422" dy="-374" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -188,7 +188,7 @@
         <mxCell id="_NbM3XgNjk7rVD2YRR4O-42" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=green;imageAspect=0;aspect=fixed;image=https://docs.honeycomb.io/logos/opentracing-sm.png;rounded=1;strokeWidth=1;fillColor=#77e6cb4d;" parent="1" vertex="1">
           <mxGeometry x="944.42" y="2045.44" width="36" height="36" as="geometry" />
         </mxCell>
-        <mxCell id="_NbM3XgNjk7rVD2YRR4O-43" value="&lt;font&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;OpenTracing&lt;br&gt;Bridge&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;strokeWidth=1;arcSize=50;rotation=30;fillColor=#99CCFF;" parent="1" vertex="1">
+        <mxCell id="_NbM3XgNjk7rVD2YRR4O-43" value="&lt;font&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;OpenTracing&lt;br&gt;Bridge&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;strokeWidth=1;arcSize=50;rotation=30;fillColor=#77E6CB;" parent="1" vertex="1">
           <mxGeometry x="875" y="2117" width="90" height="30" as="geometry" />
         </mxCell>
         <mxCell id="_NbM3XgNjk7rVD2YRR4O-44" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;strokeWidth=1;align=center;outlineConnect=0;dashed=0;outlineConnect=0;shape=mxgraph.aws3d.dataServer;strokeColor=#5E5E5E;aspect=fixed;rounded=1;fillColor=#ffffff;fontColor=#000000;" parent="1" vertex="1">
@@ -197,7 +197,7 @@
         <mxCell id="_NbM3XgNjk7rVD2YRR4O-45" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=green;imageAspect=0;aspect=fixed;image=https://opencensus.io/img/logo-sm.svg;rounded=1;strokeWidth=1;fillColor=#77e6cb4d;" parent="1" vertex="1">
           <mxGeometry x="1016.5" y="2089.12" width="36" height="33.55" as="geometry" />
         </mxCell>
-        <mxCell id="_NbM3XgNjk7rVD2YRR4O-46" value="&lt;font&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;OpenCensus &lt;br&gt;Bridge&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;strokeWidth=1;arcSize=50;rotation=30;fillColor=#99CCFF;" parent="1" vertex="1">
+        <mxCell id="_NbM3XgNjk7rVD2YRR4O-46" value="&lt;font&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;OpenCensus &lt;br&gt;Bridge&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;strokeWidth=1;arcSize=50;rotation=30;fillColor=#77E6CB;" parent="1" vertex="1">
           <mxGeometry x="959.58" y="2164.04" width="90" height="30" as="geometry" />
         </mxCell>
         <mxCell id="_NbM3XgNjk7rVD2YRR4O-47" value="&lt;font&gt;&lt;span&gt;&lt;font style=&quot;font-size: 20px&quot;&gt;Collector&lt;/font&gt;&lt;/span&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;strokeWidth=1;arcSize=50;rotation=30;fillColor=#77E6CB;strokeColor=#00CCCC;fontStyle=0" parent="1" vertex="1">
@@ -346,7 +346,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="alzd5_KLfTSnT8asQkEZ-2" value="" style="endArrow=none;html=1;strokeColor=#77E6CB;" edge="1" parent="1">
+        <mxCell id="alzd5_KLfTSnT8asQkEZ-2" value="" style="endArrow=none;html=1;strokeColor=#77E6CB;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1165.5" y="1965.1399999999999" as="sourcePoint" />
             <mxPoint x="1480" y="2150" as="targetPoint" />
